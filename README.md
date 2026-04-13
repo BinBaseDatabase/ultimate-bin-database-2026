@@ -1,81 +1,88 @@
 # 🌍 Global BIN Database Premium (2026 Edition)
-### Professional Grade Card Issuing Data | 6 to 11-Digit Precision
+### Professional Grade Card Issuing Data | 3,294,052 Records | 6 to 11-Digit Precision
 
-This repository provides a high-performance, global BIN (Bank Identification Number) database. While the provided **sample focuses on major markets (USA, Europe, Asia)**, the full database covers **all 249+ ISO countries and territories** and over **3.5 million unique ranges**.
+This repository provides a high-performance, global BIN (Bank Identification Number) database. Engineered for payment processors, fintech platforms, and fraud prevention systems, our dataset offers surgical precision beyond the outdated 6-digit standard.
 
 ---
 
-## 💎 Why Precision Matters (6 vs 11 Digits)
-Standard databases limited to 6 digits are obsolete. Modern card issuing uses 8, 9, 10, and 11-digit ranges to differentiate between products, currencies, and sub-brands within a single bank.
-
-**Our Waterfall Lookup Logic:**
+## 💎 Why Precision Matters (The 11-Digit Standard)
+Modern card issuing uses extended ranges to differentiate products, currencies, and sub-brands. **Over 88% of our database consists of high-precision ranges (8-11 digits).** **Our Waterfall Lookup Logic:**
 To ensure 100% routing accuracy, implement a descending search:
 `11-digits` → `10-digits` → `9-digits` → `8-digits` → `6-digits`.
 
 ---
 
-## 🛠 Detailed Field Specification
+## 📊 Database Statistics & Market Highlights
 
-The database is provided in `.csv` format (Semicolon separated `;`).
+### BIN Precision Distribution
+| Range | Records | Percentage |
+| :--- | :--- | :--- |
+| **6-digit BINs** | 375,523 | 11.40% (Standard) |
+| **8-digit BINs** | 510,565 | 15.50% (New ISO) |
+| **9-digit BINs** | 1,439,224 | **43.69% (Ultra-High)** |
+| **10-digit BINs** | 951,134 | 28.87% (Deep Product) |
+| **11-digit BINs** | 17,605 | 0.53% (Specialized) |
 
-### 🟦 Core Identification (Fields 1-14)
-| # | Field Name | Description | Example |
-|---|---|---|---|
-| 1 | **BIN** | Card prefix (6, 8, 9, 10, or 11 digits) | `467122502` |
-| 2 | **Brand** | Card scheme (VISA, MASTERCARD, AMEX, JCB, etc.) | `VISA` |
-| 3 | **Issuer** | Name of the issuing organization/bank | `HANA CARD` |
-| 4 | **Type** | Card type: `DEBIT`, `CREDIT`, or `CHARGE CARD` | `CREDIT` |
-| 5 | **Category** | Product level: `CLASSIC`, `GOLD`, `PLATINUM`, `WORLD`, etc. | `CLASSIC` |
-| 6 | **Country Name** | Full name of the issuing country | `KOREA, REPUBLIC OF` |
-| 7 | **ISO A2** | 2-letter country code (ISO 3166-1) | `KR` |
-| 8 | **ISO A3** | 3-letter country code (ISO 3166-1) | `KOR` |
-| 9 | **ISO Number** | Numeric country code | `410` |
-| 10 | **Website** | Official website of the issuer | `WWW.HANACARD.CO.KR` |
-| 11 | **Phone** | Customer service phone of the issuer | `82-1544-3500` |
-| 12 | **PAN Length** | Total digits on the card (Primary Account Number) | `16` |
-| 13 | **Usage** | Segment: `PERSONAL` or `COMMERCIAL` | `PERSONAL` |
-| 14 | **Regulated** | Interchange fee status: `Y` (Regulated) or `N` (Unregulated) | `N` |
+### 🌐 Key Market Coverage
+Our database is optimized for the world's most active card markets:
+* **North America (USA & Canada):** 1,168,757 records (35.48%). Full support for Durbin Amendment (Regulated) flags.
+* **Europe (UK, Nordics, EEA):** 418,964 records (12.72%). Interchange optimization for Personal vs Commercial.
+* **Asia-Pacific (Japan, Korea, China, India):** 357,238 records (10.84%). Advanced support for CUP, JCB, and RuPay.
+* **Latin America (Brazil & Mexico):** 88,770 records focused on fast-growing fintech issuers like NuBank.
 
-### 🟩 Advanced Fintech & Payout Data (Fields 15-29)
-*Crucial for Payment Service Providers (PSPs) and Neobanks.*
-
-| # | Field Name | Technical Definition |
-|---|---|---|
-| 15 | **DebitNetwork** | US Debit networks (e.g., Star, Pulse, NYCE) - *USA only* |
-| 16 | **ATMNetwork** | ATM regional networks - *USA only* |
-| 17 | **CommL2 Support** | Commercial Level 2 data support (Y/N) |
-| 18 | **CommL3 Support** | Commercial Level 3 data support (Y/N) |
-| 19 | **FF_Dom** | **Fast Funds Domestic:** Supports instant payouts within the same country |
-| 20 | **FF_Cross** | **Fast Funds Cross-border:** Supports instant international payouts |
-| 21 | **MS_Ind** | **Mastercard MoneySend:** Specific indicator for MC push-payments |
-| 22 | **Push_Dom** | Generic Push Funds support (Domestic) |
-| 23 | **Push_Cross** | Generic Push Funds support (Cross-border) |
-| 24 | **MT_Ind** | **Visa Money Transfer:** Specific indicator for Visa push-payments |
-| 25 | **OG_FF_Dom** | **Online Gambling FF:** Supports payouts for gambling merchants (Domestic) |
-| 26 | **OG_FF_Cross** | **Online Gambling FF:** Supports payouts for gambling merchants (Cross-border) |
-| 27 | **Pull_Dom** | Support for Pull-funds (Direct Debit style transactions) |
-| 28 | **Token** | **Token BIN Range:** Identifies Apple Pay, Google Pay, and other virtual tokens |
-| 29 | **Currency** | ISO 3-digit currency code (e.g., `USD`, `EUR`, `GBP`) |
+### 💳 Supported Brands (Highlights)
+`VISA` • `MASTERCARD` • `AMERICAN EXPRESS` • `CHINA UNION PAY` • `JCB` • `DISCOVER` • `DINERS CLUB` • `RUPAY` • `ELO` • `MIR` • `TROY` • `HIPERCARD` • `MAESTRO` • `FUEL CARDS` (Wex, Shell).
 
 ---
 
-## 📈 Regional Coverage
-- **North America:** Deep data for Durbin Amendment (Regulated) and US Debit Networks.
-- **Europe (EEA):** Full interchange optimization data (Personal vs Commercial).
-- **Asia-Pacific:** Advanced support for 11-digit BINs (UnionPay, JCB).
-- **LATAM & MEA:** Growing coverage for local schemes and neobanks.
+## 🛠 Extended Data Dictionary (29 Fields)
 
-## 📥 Sample Data
-The `bin_database_sample_2026.csv` file contains **50,000 records** specifically selected to demonstrate:
-1. "Cluster" structures (how one prefix splits into many products).
-2. Advanced fields (FF, MS, Currency) in action.
-3. High-precision (8-11 digit) examples.
+The database is delivered as a CSV file using `;` as a separator.
+
+### 🟦 Phase 1: Core Card & Issuer Data
+| # | Field Name | Detailed Description | Business Value |
+| :--- | :--- | :--- | :--- |
+| **1** | **BIN** | The prefix (6–11 digits). | Primary key for identification. |
+| **2** | **Brand** | Card scheme (e.g., VISA, MASTERCARD). | Determines transaction rules. |
+| **3** | **Issuer** | Issuing bank name. | KYC and white-listing. |
+| **4** | **Type** | DEBIT, CREDIT, or CHARGE. | Risk profiling and fee calculation. |
+| **5** | **Category** | Product tier (PLATINUM, WORLD, etc.). | Identify VIP/high-limit cards. |
+| **6** | **Country** | Full name of issuing country. | Geo-fencing/Local compliance. |
+| **7-9** | **ISO Codes** | A2, A3, and Numeric ISO codes. | API and legacy system compatibility. |
+| **10-11**| **Contact** | Issuer Website & Phone. | Manual verification & support. |
+| **12** | **PAN Len** | Total digits on card (12–19). | Front-end input validation. |
+| **13** | **Usage** | PERSONAL vs. COMMERCIAL. | Impact on Interchange Fees (ICF). |
+| **14** | **Regulated** | Y/N status (e.g., US Durbin status). | Critical for US fee optimization. |
+
+### 🟩 Phase 2: Advanced Fintech & Payout Specs
+| # | Field Name | Detailed Description | Business Value |
+| :--- | :--- | :--- | :--- |
+| **15-16**| **Net Info** | US Debit & ATM networks (STAR, NYCE). | Routing cost reduction in USA. |
+| **17-18**| **Comm L2/L3**| Commercial Data support levels. | Required for B2B/Corporate reporting. |
+| **19-20**| **Fast Funds**| FF Domestic & Cross-border support. | **Essential for instant payouts.** |
+| **21** | **MS Ind** | Mastercard MoneySend indicator. | MC "Push-to-Card" protocol. |
+| **24** | **MT Ind** | Visa Money Transfer indicator. | Visa Direct payout protocol. |
+| **25-26**| **OG FF** | Online Gambling FF (Domestic/Cross). | **Critical for Betting/Gaming industry.** |
+| **27** | **Pull Dom** | Support for Direct Debit / Pull-funds. | Subscription/Recurring billing. |
+| **28** | **Token** | Tokenized Range (Apple/Google Pay). | Digital wallet identification. |
+| **29** | **Currency** | Default ISO currency (USD, EUR, etc.). | Dynamic currency conversion (DCC). |
 
 ---
 
-## 📬 Contact & Full Version
-The full database (3.5M+ rows) is available via subscription or one-time purchase.
+## ⌨️ Implementation for Developers
+Ready-to-use code snippets for **Python, PHP, and SQL** to handle waterfall lookups.
+
+👉 **[View Implementation Guide & Code Snippets](./examples/implementation_guide.md)**
+
+---
+
+## 💳 Get the Full Database
+The full version (3.2M+ rows) is updated weekly.
+
+| Edition | Records | Updates | Format |
+| :--- | :--- | :--- | :--- |
+| **Sample** | 50,000 | N/A | [Download Here](./bin_database_sample_2026.csv) |
+| **Full Premium** | 3,294,052 | Weekly | CSV / SQL / JSON |
 
 **Official Website:** [www.binbase.com](https://www.binbase.com)  
-**Email:** [support@binbase.com]  
-**Updates:** Data refreshed weekly.
+**Inquiries:** [sales@binbase.com]  
